@@ -1,0 +1,39 @@
+### Prueba de fecha festiva fija
+GET http://localhost:54373/api/festivos?TextoFecha=01/01/2019
+### Resultado esperado: true
+
+### Prueba de fecha festiva por Ley de Puente Festivo
+GET http://localhost:54373/api/festivos?TextoFecha=07/01/2019
+### Resultado esperado: true (Santos Reyes trasladado al lunes)
+
+### Prueba de fecha festiva basada en Pascua
+GET http://localhost:54373/api/festivos?TextoFecha=19/04/2019
+### Resultado esperado: true (Viernes Santo)
+
+### Prueba de fecha festiva basada en Pascua y Ley de Puente Festivo
+GET http://localhost:54373/api/festivos?TextoFecha=03/06/2019
+### Resultado esperado: true (Ascensión del Señor trasladado al lunes)
+
+### Prueba de fecha no festiva
+GET http://localhost:54373/api/festivos?TextoFecha=12/06/2019
+### Resultado esperado: false
+
+### Prueba de fecha no válida (30 de febrero)
+GET http://localhost:54373/api/festivos?TextoFecha=30/02/2019
+### Resultado esperado: {"Message": "Fecha no válida"}
+
+### Prueba de fecha no válida (31 de abril)
+GET http://localhost:54373/api/festivos?TextoFecha=31/04/2019
+### Resultado esperado: {"Message": "Fecha no válida"}
+
+### Prueba de fecha festiva fija (Navidad)
+GET http://localhost:54373/api/festivos?TextoFecha=25/12/2019
+### Resultado esperado: true
+
+### Prueba de fecha festiva fija (Día del Trabajo)
+GET http://localhost:54373/api/festivos?TextoFecha=01/05/2019
+### Resultado esperado: true
+
+### Prueba de fecha festiva por Ley de Puente Festivo (Día de la Raza)
+GET http://localhost:54373/api/festivos?TextoFecha=14/10/2019
+### Resultado esperado: true (Día de la Raza trasladado al lunes)
